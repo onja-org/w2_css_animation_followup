@@ -2,7 +2,7 @@
 
 ![Monster in a Box Animation](assets/monster_in_a_box.gif)
 
-Welcome to your first **build-from-scratch** animation project! Today you're going to bring something truly unique to life - a mysterious creature peering through a crack in a box.
+Welcome to your first **build-from-scratch** animation project! Today you're going to bring something strange to life - a mysterious creature peering through a crack in a box.
 
 This isn't just about animations though. You'll be practicing the complete web development workflow: planning your structure, writing HTML from scratch, styling with CSS, and then adding the magic of animation.
 
