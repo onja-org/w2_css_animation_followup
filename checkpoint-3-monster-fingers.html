@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpoint 3: Monster Fingers</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+            border: 4px solid #8B7355;
+        }
+
+        .wall-top {
+            width: 395px;
+            height: 150px;
+            margin: auto auto;
+            background: #8B7355;
+            top: 0;
+        }
+
+        .wall-bottom {
+            width: 395px;
+            height: 150px;
+            margin: auto auto;
+            background: #8B7355;
+            bottom: 0;
+        }
+
+        .finger {
+            position: absolute;
+            width: 12px;
+            height: 20px;
+            background: #4A4A4A;
+            border-radius: 15px;
+        }
+
+        .finger-top {
+            top: 145px;
+        }
+
+        .finger-top-1 { left: 200px; }
+        .finger-top-2 { left: 185px; }
+        .finger-top-3 { left: 170px; }
+        .finger-top-4 { left: 155px; }
+
+        .finger-bottom {
+            bottom: 145px;
+        }
+
+        .finger-bottom-1 { left: 260px; }
+        .finger-bottom-2 { left: 245px; }
+        .finger-bottom-3 { left: 230px; }
+        .finger-bottom-4 { left: 215px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="wall-top"></div>
+        <div class="wall-bottom"></div>
+
+        <div class="finger finger-top finger-top-1"></div>
+        <div class="finger finger-top finger-top-2"></div>
+        <div class="finger finger-top finger-top-3"></div>
+        <div class="finger finger-top finger-top-4"></div>
+        <div class="finger finger-bottom finger-bottom-1"></div>
+        <div class="finger finger-bottom finger-bottom-2"></div>
+        <div class="finger finger-bottom finger-bottom-3"></div>
+        <div class="finger finger-bottom finger-bottom-4"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* ===== MONSTER IN A BOX - CSS ANIMATION PROJECT ===== */
+
+/* 
+Welcome to your first build-from-scratch animation project!
+You'll add your CSS here step by step following the checkpoints.
+
+Remember:
+- Test after each checkpoint to make sure everything works
+- Use browser developer tools to debug positioning issues
+- Don't rush ahead - each step builds on the previous one
+*/
+
+/* ===== PAGE SETUP ===== */
+body {
+    margin: 0;
+    padding: 20px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* ===== CHECKPOINT 1: SCENE SETUP ===== */
+/* Create your box container here */
+
+
+/* ===== CHECKPOINT 2: WALL STRUCTURE ===== */
+/* Add your wall pieces here */
+
+
+/* ===== CHECKPOINT 3: MONSTER FINGERS ===== */
+/* Add your finger elements here */
+
+
+/* ===== CHECKPOINT 4: MONSTER EYES ===== */
+/* Add your eye elements here */
+
+
+/* ===== CHECKPOINT 5: WALL OPENING ANIMATION ===== */
+/* Create your wall animation keyframes here */
+
+
+/* ===== CHECKPOINT 6: FINGER EXTENSION ANIMATION ===== */
+/* Create your finger animation keyframes here */
+
+
+/* ===== CHECKPOINT 7: EYE BLINKING ANIMATION ===== */
+/* Create your eye animation keyframes here */
