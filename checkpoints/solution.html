@@ -1,196 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monster in a Box - Solution</title>
     <style>
-        /* ===== PAGE SETUP ===== */
-        body {
-            margin: 0;
-            padding: 20px;
-            background: #222;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
+      /* ===== PAGE SETUP ===== */
+      body {
+        margin: 0;
+        padding: 20px;
+        background: #222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+
+      /* ===== THE BOX CONTAINER ===== */
+      .box {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        border-radius: 10px;
+        border: 4px solid #8b7355;
+      }
+
+      /* ===== WALL PIECES ===== */
+      .wall-top {
+        width: 395px;
+        height: 150px;
+        margin: auto auto;
+        background: #8b7355;
+        top: 0;
+        animation: wallOpenTop 12s infinite;
+      }
+
+      .wall-bottom {
+        width: 395px;
+        height: 150px;
+        margin: auto auto;
+        background: #8b7355;
+        bottom: 0;
+        animation: wallOpenBottom 12s infinite;
+      }
+
+      /* ===== MONSTER FINGERS ===== */
+      .finger {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: #4a4a4a;
+        border-radius: 15px;
+      }
+
+      /* Top row fingers */
+      .finger-top {
+        top: 145px;
+        animation: fingerExtendTop 12s infinite;
+      }
+
+      .finger-top-1 {
+        left: 200px;
+      }
+      .finger-top-2 {
+        left: 185px;
+      }
+      .finger-top-3 {
+        left: 170px;
+      }
+      .finger-top-4 {
+        left: 155px;
+      }
+
+      /* Bottom row fingers */
+      .finger-bottom {
+        bottom: 145px;
+        animation: fingerExtendBottom 12s infinite;
+      }
+
+      .finger-bottom-1 {
+        left: 260px;
+      }
+      .finger-bottom-2 {
+        left: 245px;
+      }
+      .finger-bottom-3 {
+        left: 230px;
+      }
+      .finger-bottom-4 {
+        left: 215px;
+      }
+
+      /* ===== MONSTER EYES ===== */
+      .eye {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #ff6b6b;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        animation: eyeBlink 12s infinite;
+      }
+
+      /* Eye pupils */
+      .eye::before {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #000;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .eye-left {
+        left: 170px;
+      }
+      .eye-right {
+        right: 170px;
+      }
+
+      /* ===== ANIMATIONS ===== */
+
+      /* Top wall animation - moves up and tilts */
+      @keyframes wallOpenTop {
+        0%,
+        25%,
+        75%,
+        100% {
+          width: 394px;
+          height: 150px;
+          transform: translateY(-4px);
         }
-
-        /* ===== THE BOX CONTAINER ===== */
-        .box {
-            position: relative;
-            width: 400px;
-            height: 300px;
-            border-radius: 10px;
-            border: 4px solid #8B7355;
+        40%,
+        60% {
+          width: 414px;
+          height: 125px;
+          transform: translateY(-5px) translateX(-7px) perspective(250px) rotateX(8deg);
         }
+      }
 
-        /* ===== WALL PIECES ===== */
-        .wall-top {
-            width: 395px;
-            height: 150px;
-            margin: auto auto;
-            background: #8B7355;
-            top: 0;
-            animation: wallOpenTop 12s infinite;
+      /* Bottom wall animation - moves down and tilts */
+      @keyframes wallOpenBottom {
+        0%,
+        25%,
+        75%,
+        100% {
+          transform: translateY(4px) translateX(0px);
+          height: 150px;
+          width: 394px;
         }
-
-        .wall-bottom {
-            width: 395px;
-            height: 150px;
-            margin: auto auto;
-            background: #8B7355;
-            bottom: 0;
-            animation: wallOpenBottom 12s infinite;
+        40%,
+        60% {
+          width: 414px;
+          height: 125px;
+          transform: translateY(55px) translateX(-7px) perspective(250px) rotateX(-8deg);
         }
+      }
 
-        /* ===== MONSTER FINGERS ===== */
-        .finger {
-            position: absolute;
-            width: 12px;
-            height: 20px;
-            background: #4A4A4A;
-            border-radius: 15px;
+      /* Top fingers extend downward when crack opens */
+      @keyframes fingerExtendTop {
+        0%,
+        25%,
+        75%,
+        100% {
+          height: 20px;
+          transform: translateY(0);
         }
-
-        /* Top row fingers */
-        .finger-top {
-            top: 145px;
-            animation: fingerExtendTop 12s infinite;
+        40%,
+        60% {
+          height: 40px;
+          transform: translateY(20px);
         }
+      }
 
-        .finger-top-1 { left: 200px; }
-        .finger-top-2 { left: 185px; }
-        .finger-top-3 { left: 170px; }
-        .finger-top-4 { left: 155px; }
-
-        /* Bottom row fingers */
-        .finger-bottom {
-            bottom: 145px;
-            animation: fingerExtendBottom 12s infinite;
+      /* Bottom fingers extend upward when crack opens */
+      @keyframes fingerExtendBottom {
+        0%,
+        25%,
+        75%,
+        100% {
+          height: 20px;
+          transform: translateY(0);
         }
-
-        .finger-bottom-1 { left: 260px; }
-        .finger-bottom-2 { left: 245px; }
-        .finger-bottom-3 { left: 230px; }
-        .finger-bottom-4 { left: 215px; }
-
-        /* ===== MONSTER EYES ===== */
-        .eye {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background: #FF6B6B;
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            animation: eyeBlink 12s infinite;
+        40%,
+        60% {
+          height: 40px;
+          transform: translateY(-20px);
         }
+      }
 
-        /* Eye pupils */
-        .eye::before {
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #000;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+      /* Eyes blink/appear when crack is open */
+      @keyframes eyeBlink {
+        0%,
+        40%,
+        56%,
+        64%,
+        100% {
+          height: 0px;
+          opacity: 0;
         }
-
-        .eye-left { left: 170px; }
-        .eye-right { right: 170px; }
-
-        /* ===== ANIMATIONS ===== */
-
-        /* Top wall animation - moves up and tilts */
-        @keyframes wallOpenTop {
-            0%, 25%, 75%, 100% {
-                width: 394px;
-                height: 150px;
-                transform: translateY(-4px);
-            }
-            40%, 60% {
-                width: 414px;
-                height: 125px;
-                transform: translateY(-5px) translateX(-7px) perspective(250px) rotateX(8deg);
-            }
+        42%,
+        52%,
+        60%,
+        62% {
+          height: 20px;
+          opacity: 1;
         }
-
-        /* Bottom wall animation - moves down and tilts */
-        @keyframes wallOpenBottom {
-            0%, 25%, 75%, 100% {
-                transform: translateY(4px) translateX(0px);
-                height: 150px;
-                width: 394px;
-            }
-            40%, 60% {
-                width: 414px;
-                height: 125px;
-                transform: translateY(55px) translateX(-7px) perspective(250px) rotateX(-8deg);
-            }
-        }
-
-        /* Top fingers extend downward when crack opens */
-        @keyframes fingerExtendTop {
-            0%, 25%, 75%, 100% {
-                height: 20px;
-                transform: translateY(0);
-            }
-            40%, 60% {
-                height: 40px;
-                transform: translateY(20px);
-            }
-        }
-
-        /* Bottom fingers extend upward when crack opens */
-        @keyframes fingerExtendBottom {
-            0%, 25%, 75%, 100% {
-                height: 20px;
-                transform: translateY(0);
-            }
-            40%, 60% {
-                height: 40px;
-                transform: translateY(-20px);
-            }
-        }
-
-        /* Eyes blink/appear when crack is open */
-        @keyframes eyeBlink {
-            0%, 40%, 56%, 64%, 100% {
-                height: 0px;
-                opacity: 0;
-            }
-            42%, 52%, 60%, 62% {
-                height: 20px;
-                opacity: 1;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="box">
-        <!-- Wall pieces that slide apart -->
-        <div class="wall-top"></div>
-        <div class="wall-bottom"></div>
+      <!-- Wall pieces that slide apart -->
+      <div class="wall-top"></div>
+      <div class="wall-bottom"></div>
 
-        <!-- Monster fingers gripping the crack edges -->
-        <div class="finger finger-top finger-top-1"></div>
-        <div class="finger finger-top finger-top-2"></div>
-        <div class="finger finger-top finger-top-3"></div>
-        <div class="finger finger-top finger-top-4"></div>
-        <div class="finger finger-bottom finger-bottom-1"></div>
-        <div class="finger finger-bottom finger-bottom-2"></div>
-        <div class="finger finger-bottom finger-bottom-3"></div>
-        <div class="finger finger-bottom finger-bottom-4"></div>
+      <!-- Monster fingers gripping the crack edges -->
+      <div class="finger finger-top finger-top-1"></div>
+      <div class="finger finger-top finger-top-2"></div>
+      <div class="finger finger-top finger-top-3"></div>
+      <div class="finger finger-top finger-top-4"></div>
+      <div class="finger finger-bottom finger-bottom-1"></div>
+      <div class="finger finger-bottom finger-bottom-2"></div>
+      <div class="finger finger-bottom finger-bottom-3"></div>
+      <div class="finger finger-bottom finger-bottom-4"></div>
 
-        <!-- Monster eyes that peek through -->
-        <div class="eye eye-left"></div>
-        <div class="eye eye-right"></div>
+      <!-- Monster eyes that peek through -->
+      <div class="eye eye-left"></div>
+      <div class="eye eye-right"></div>
     </div>
-</body>
+  </body>
 </html>
