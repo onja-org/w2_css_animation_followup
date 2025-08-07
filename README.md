@@ -237,9 +237,9 @@ The walls should now slide apart periodically, revealing a wider crack.
 
 **Key considerations**:
 
-- Fingers should extend toward the center of the crack
+- Fingers should extend away from the center of the crack
 - Match the timing with your wall animation
-- Top fingers might extend downward, bottom fingers upward
+- Top fingers might extend upward, bottom fingers downward, like the hand is gripping the edges of the box.
 - Use the same duration as your wall animation for coordination
 
 <details>
